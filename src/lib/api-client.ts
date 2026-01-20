@@ -68,10 +68,8 @@ class APIClient {
     if (options.num_questions) {
       formData.append('num_questions', options.num_questions.toString())
     }
-    if (options.question_types) {
-      options.question_types.forEach((type) => {
-        formData.append('question_types', type)
-      })
+    if (options.question_types && options.question_types.length > 0) {
+      formData.append('question_types', options.question_types.join(','))
     }
     if (options.difficulty) {
       formData.append('difficulty', options.difficulty)

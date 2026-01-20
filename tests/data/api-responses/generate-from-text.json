@@ -1,0 +1,34 @@
+{
+  "session_id": "session-12345",
+  "questions": [
+    {
+      "id": "q-1",
+      "question_text": "What is the primary function of photosynthesis?",
+      "question_type": "mcq",
+      "difficulty": "medium",
+      "topic": "Biology",
+      "explanation": "Photosynthesis converts light energy into chemical energy stored in glucose.",
+      "correct_answer": "Convert light energy into chemical energy",
+      "options": [
+        { "label": "A", "text": "Convert light energy into chemical energy", "is_correct": true },
+        { "label": "B", "text": "Break down glucose for energy", "is_correct": false },
+        { "label": "C", "text": "Produce oxygen as a waste product", "is_correct": false },
+        { "label": "D", "text": "Absorb water from soil", "is_correct": false }
+      ],
+      "confidence_score": 0.92
+    },
+    {
+      "id": "q-2",
+      "question_text": "Explain the process of cellular respiration.",
+      "question_type": "open_ended",
+      "difficulty": "hard",
+      "topic": "Biology",
+      "explanation": "Cellular respiration is the process by which cells break down glucose to produce ATP.",
+      "correct_answer": "Cellular respiration breaks down glucose in the presence of oxygen to produce ATP, CO2, and water through glycolysis, Krebs cycle, and electron transport chain.",
+      "options": null,
+      "confidence_score": 0.88
+    }
+  ],
+  "generation_summary": "Generated 2 questions covering photosynthesis and cellular respiration",
+  "source_type": "text"
+}

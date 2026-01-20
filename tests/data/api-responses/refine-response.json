@@ -1,0 +1,22 @@
+{
+  "conversation_id": "conv-12345",
+  "refined_question": {
+    "id": "q-1",
+    "question_text": "What is the primary function of photosynthesis in plant cells?",
+    "question_type": "mcq",
+    "difficulty": "medium",
+    "topic": "Biology - Plant Physiology",
+    "explanation": "Photosynthesis is the process by which plants convert light energy into chemical energy (glucose) using chlorophyll.",
+    "correct_answer": "Convert light energy into chemical energy",
+    "options": [
+      { "label": "A", "text": "Convert light energy into chemical energy", "is_correct": true },
+      { "label": "B", "text": "Break down glucose for ATP", "is_correct": false },
+      { "label": "C", "text": "Release oxygen as primary purpose", "is_correct": false },
+      { "label": "D", "text": "Absorb minerals from soil", "is_correct": false }
+    ],
+    "confidence_score": 0.94
+  },
+  "changes_made": "Added 'in plant cells' to make the context more specific. Refined topic to 'Biology - Plant Physiology'. Enhanced explanation to mention chlorophyll. Improved distractors to be more challenging.",
+  "confidence_score": 0.94,
+  "turn_number": 1
+}
