@@ -2,7 +2,8 @@ import { Page, Route } from '@playwright/test'
 import * as fs from 'fs'
 import * as path from 'path'
 
-const API_BASE = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000/api/v1'
+// Use glob pattern to intercept all API calls regardless of base URL
+const API_PATTERN = '**/api/v1/**'
 
 export interface MockAPIOptions {
   generateFromText?: MockEndpointOptions
@@ -58,8 +59,10 @@ async function handleMockRoute(
 }
 
 export async function setupAPIMocks(page: Page, options: MockAPIOptions = {}) {
+  // Use glob patterns for flexible URL matching
+
   // Mock /generate/from-text
-  await page.route(`${API_BASE}/generate/from-text`, async (route: Route) => {
+  await page.route('**/generate/from-text', async (route: Route) => {
     await handleMockRoute(route, {
       defaultFile: 'generate-from-text.json',
       options: options.generateFromText,
@@ -67,7 +70,7 @@ export async function setupAPIMocks(page: Page, options: MockAPIOptions = {}) {
   })
 
   // Mock /generate/from-pdf
-  await page.route(`${API_BASE}/generate/from-pdf`, async (route: Route) => {
+  await page.route('**/generate/from-pdf', async (route: Route) => {
     await handleMockRoute(route, {
       defaultFile: 'generate-from-text.json', // Same response format
       options: options.generateFromPDF,
@@ -75,7 +78,7 @@ export async function setupAPIMocks(page: Page, options: MockAPIOptions = {}) {
   })
 
   // Mock /similar/generate
-  await page.route(`${API_BASE}/similar/generate`, async (route: Route) => {
+  await page.route('**/similar/generate', async (route: Route) => {
     await handleMockRoute(route, {
       defaultFile: 'similar-generate.json',
       options: options.generateSimilar,
@@ -83,7 +86,7 @@ export async function setupAPIMocks(page: Page, options: MockAPIOptions = {}) {
   })
 
   // Mock /refine/refine
-  await page.route(`${API_BASE}/refine/refine`, async (route: Route) => {
+  await page.route('**/refine/refine', async (route: Route) => {
     await handleMockRoute(route, {
       defaultFile: 'refine-response.json',
       options: options.refineQuestion,
