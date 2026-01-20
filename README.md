@@ -1,1 +1,0 @@
-# socratic_ai_frontend
