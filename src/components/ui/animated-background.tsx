@@ -1,92 +1,118 @@
 'use client'
 
-import { useEffect, useRef } from 'react'
 import { motion } from 'framer-motion'
 
+/**
+ * MinimalBackground - Subtle depth layer for professional aesthetic
+ * Creates ambient depth without distraction
+ */
 export function AnimatedBackground() {
   return (
     <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-      {/* Gradient mesh background */}
-      <div className="absolute inset-0 gradient-mesh opacity-50" />
-      
-      {/* Animated orbs */}
-      <motion.div
-        className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full bg-gradient-to-r from-blue-500/20 to-violet-500/20 blur-3xl"
-        animate={{
-          x: [0, 100, 0],
-          y: [0, -50, 0],
-          scale: [1, 1.1, 1],
-        }}
-        transition={{
-          duration: 20,
-          repeat: Infinity,
-          ease: "easeInOut",
+      {/* Subtle radial gradients for depth */}
+      <div
+        className="absolute inset-0 opacity-30 dark:opacity-40"
+        style={{
+          background: `
+            radial-gradient(ellipse 80% 50% at 50% -20%, hsl(var(--foreground) / 0.03), transparent),
+            radial-gradient(ellipse 60% 40% at 100% 100%, hsl(var(--foreground) / 0.02), transparent),
+            radial-gradient(ellipse 50% 30% at 0% 100%, hsl(var(--foreground) / 0.02), transparent)
+          `
         }}
       />
-      
+
+      {/* Ultra-subtle animated gradient orbs */}
       <motion.div
-        className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full bg-gradient-to-r from-purple-500/20 to-pink-500/20 blur-3xl"
+        className="absolute top-[20%] left-[30%] w-[600px] h-[600px] rounded-full"
+        style={{
+          background: 'radial-gradient(circle, hsl(var(--foreground) / 0.015), transparent 70%)',
+          filter: 'blur(60px)',
+        }}
         animate={{
-          x: [0, -80, 0],
-          y: [0, 80, 0],
-          scale: [1, 1.2, 1],
+          x: [0, 40, 0],
+          y: [0, -20, 0],
+          scale: [1, 1.02, 1],
         }}
         transition={{
-          duration: 25,
+          duration: 30,
           repeat: Infinity,
-          ease: "easeInOut",
+          ease: 'easeInOut',
         }}
       />
-      
+
       <motion.div
-        className="absolute top-1/2 right-1/3 w-64 h-64 rounded-full bg-gradient-to-r from-cyan-500/15 to-blue-500/15 blur-3xl"
+        className="absolute bottom-[20%] right-[20%] w-[500px] h-[500px] rounded-full"
+        style={{
+          background: 'radial-gradient(circle, hsl(var(--foreground) / 0.01), transparent 70%)',
+          filter: 'blur(50px)',
+        }}
         animate={{
-          x: [0, 60, 0],
-          y: [0, -60, 0],
-          scale: [1, 0.9, 1],
+          x: [0, -30, 0],
+          y: [0, 30, 0],
+          scale: [1, 1.03, 1],
         }}
         transition={{
-          duration: 18,
+          duration: 35,
           repeat: Infinity,
-          ease: "easeInOut",
+          ease: 'easeInOut',
         }}
       />
-      
-      {/* Grid pattern overlay */}
-      <div 
-        className="absolute inset-0 opacity-[0.02]"
+
+      {/* Ultra-subtle grid pattern */}
+      <div
+        className="absolute inset-0 opacity-[0.012] dark:opacity-[0.02]"
         style={{
           backgroundImage: `
             linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
             linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)
           `,
-          backgroundSize: '50px 50px',
+          backgroundSize: '64px 64px',
+        }}
+      />
+
+      {/* Subtle noise texture for premium feel */}
+      <div
+        className="absolute inset-0 opacity-[0.015] dark:opacity-[0.025] mix-blend-overlay"
+        style={{
+          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")`,
+        }}
+      />
+
+      {/* Vignette effect for depth */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background: 'radial-gradient(ellipse at center, transparent 0%, hsl(var(--background) / 0.4) 100%)',
         }}
       />
     </div>
   )
 }
 
-export function FloatingParticles() {
+/**
+ * FloatingParticles - Optional subtle particles effect
+ * Use sparingly for specific sections
+ */
+export function FloatingParticles({ count = 12 }: { count?: number }) {
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-      {[...Array(20)].map((_, i) => (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {[...Array(count)].map((_, i) => (
         <motion.div
           key={i}
-          className="absolute w-1 h-1 rounded-full bg-primary/30"
+          className="absolute w-[2px] h-[2px] rounded-full bg-foreground/10"
           style={{
-            left: `${Math.random() * 100}%`,
-            top: `${Math.random() * 100}%`,
+            left: `${10 + Math.random() * 80}%`,
+            top: `${10 + Math.random() * 80}%`,
           }}
           animate={{
-            y: [0, -30, 0],
-            opacity: [0.3, 0.8, 0.3],
+            y: [0, -15, 0],
+            opacity: [0.1, 0.25, 0.1],
           }}
           transition={{
-            duration: 3 + Math.random() * 2,
+            duration: 4 + Math.random() * 3,
             repeat: Infinity,
             delay: Math.random() * 2,
-            ease: "easeInOut",
+            ease: 'easeInOut',
           }}
         />
       ))}
