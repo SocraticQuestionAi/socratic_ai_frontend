@@ -113,10 +113,25 @@ export interface RefineResponse {
 }
 
 // -----------------------------------------------------------------------------
-// API Error Response
+// API Error Response (FastAPI Validation)
 // -----------------------------------------------------------------------------
 
+/** Individual validation error from FastAPI */
+export interface ValidationErrorItem {
+  type: string
+  loc: (string | number)[]
+  msg: string
+  input?: unknown
+  ctx?: Record<string, unknown>
+}
+
+/** FastAPI HTTPValidationError response */
+export interface HTTPValidationError {
+  detail: ValidationErrorItem[]
+}
+
+/** Generic API error (non-validation) */
 export interface APIError {
-  detail: string
+  detail: string | ValidationErrorItem[]
   status_code?: number
 }
